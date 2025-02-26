@@ -1,0 +1,17 @@
+{
+  "name": "example-scriptlist",
+  "version": "1.0.0",
+  "description": "A project for encoding script lists using Joi validation.",
+  "main": "src/encodeScriptList.js",
+  "scripts": {
+    "encode": "node ./src/encodeScriptList.js src/followallScripts.js"
+  },
+  "dependencies": {
+    "joi": "^17.6.0",
+    "serialize-javascript": "^5.0.1"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

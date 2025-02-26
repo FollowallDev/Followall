@@ -1,0 +1,16 @@
+{
+  "name": "Followall Scripts",
+  "description": "Remote scripts for Followall",
+  "homepage": "https://github.com/FollowallDev/example-scriptlist",
+  "url": "",
+  "scripts": [
+    {
+      "id": "0e36716f-7496-4619-b9bd-4b7ab98e7161",
+      "script": "%7B%22scrapePage%22%3A(details)%20%3D%3E%20%7B%0A%0A%20%20%0A%20%20let%20listData%20%3D%20%5B%5D%0A%20%20let%20parsed%20%3D%20JSON.parse(details.doc)%0A%0A%20%20const%20scrapeItem%20%3D%20(item)%20%3D%3E%20%7B%0A%0A%20%20%20%20let%20data%20%3D%20item.post%0A%20%20%20%20let%20domain%20%3D%20'bsky.app%2Fprofile%2F'%0A%0A%0A%20%20%20%20return%20%7B%0A%20%20%20%20%20%20isReblog%3A%20false%2C%0A%20%20%20%20%20%20title%3A%20data.record.text%2C%0A%20%20%20%20%20%20%2F%2F%20text%3A%20data.selftext%20%3F%20data.selftext%20%3A%20data.body%2C%0A%20%20%20%20%20%20text%3A%20false%2C%0A%20%20%20%20%20%20link%3A%20data.record%3F.embed%3F.external%3F.uri%2C%0A%20%20%20%20%20%20votes%3A%20data.likeCount%2C%0A%20%20%20%20%20%20reblogs%3A%20data.repostCount%2C%0A%20%20%20%20%20%20commentCount%3A%20data.replyCount%2C%0A%20%20%20%20%20%20url%3A%20%22https%3A%2F%2F%22%20%2B%20domain%20%2B%20data.author.handle%20%2B%20%22%2Fpost%2F%22%20%2B%20data.uri.split('%2F').pop()%2C%20%2F%2Funique%20url%20that%20identifies%20the%20post%2C%20not%20the%20reblog%20url%0A%20%20%20%20%20%20created%3A%20new%20Date(data.record.createdAt).getTime()%2C%0A%20%20%20%20%20%20displayName%3A%20data.author.displayName%2C%0A%20%20%20%20%20%20username%3A%20data.author.handle%2C%0A%20%20%20%20%20%20images%3A%20data.embed%3F.images%3F.map((img)%20%3D%3E%20img.fullsize)%2C%0A%20%20%20%20%20%20profileURL%3A%20%22https%3A%2F%2F%22%20%2B%20domain%20%2B%20%20data.author.handle%2C%0A%20%20%20%20%7D%0A%20%20%7D%0Aconsole.log('blueskysc'%2C%20parsed.feed)%3B%0A%0A%20%20%20parsed.feed.forEach((item)%20%3D%3E%20%7B%0A%0A%20%20%20%20%20%20let%20post%20%3D%20scrapeItem(item)%0A%20%20%20%20%20%20listData.push(post)%0A%20%20%7D)%0A%0A%20%20return%20%7Blist%3A%20listData%7D%0A%7D%2C%22generateRequestURL%22%3A(currentURL)%20%3D%3E%20%7B%0A%20%20return%20new%20Promise(function%20(resolve)%20%7B%0A%0A%20%20%20%20if(%20new%20RegExp(%2Fpublic.api.bsky.app%2F).test(currentURL))%20return%20resolve(%7B%20requestURL%3A%20currentURL%7D)%0A%0A%20%20%20%20let%20urlbits%20%3D%20currentURL.split('profile%2F')%0A%0A%20%20%20%20return%20resolve(%7B%20requestURL%3A%20%22https%3A%2F%2Fpublic.api.bsky.app%2Fxrpc%2Fapp.bsky.feed.getAuthorFeed%3Factor%3D%22%20%2B%20urlbits%5B1%5D%20%2B%20%22%26limit%3D20%22%7D)%0A%0A%20%20%20%20%2F%2Fhttps%3A%2F%2Fpublic.api.bsky.app%2Fxrpc%2Fapp.bsky.feed.getAuthorFeed%3Factor%3Daoc.bsky.social%26limit%3D20%0A%20%20%20%20%0A%0A%20%20%7D)%0A%7D%7D",
+      "name": "Bluesky",
+      "regex": "bsky.app|public.api.bsky.app",
+      "updateMethod": "xhr",
+      "description": "Bluesky profiles with votes and images"
+    }
+  ]
+}

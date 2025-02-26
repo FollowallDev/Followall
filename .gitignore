@@ -1,0 +1,14 @@
+node_modules
+dist
+dev
+temp
+.idea
+.history
+src/amplifeed/dev
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions

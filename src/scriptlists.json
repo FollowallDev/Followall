@@ -1,0 +1,10 @@
+{ "scriptlists": [
+
+        {
+            "name": "Followall Scripts",
+            "description": "Remote scripts for Followall",
+            "homepage": "https://github.com/FollowallDev/example-scriptlist",
+            "url": "https://raw.githubusercontent.com/FollowallDev/example-scriptlist/main/src/followallScripts.js",
+        }
+    ]
+}
