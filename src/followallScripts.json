@@ -1,8 +1,8 @@
 {
   "name": "Followall Scripts",
   "description": "Remote scripts for Followall",
-  "homepage": "https://github.com/FollowallDev/example-scriptlist",
-  "url": "",
+  "homepage": "https://github.com/FollowallDev/Followall",
+  "url": "https://raw.githubusercontent.com/FollowallDev/Followall/refs/heads/master/src/followallScripts.json",
   "scripts": [
     {
       "id": "0e36716f-7496-4619-b9bd-4b7ab98e7161",
